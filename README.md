@@ -3,4 +3,4 @@
 ---
 
 ## 데이터과학의 첫걸음: 빅데이터 분석 with Python
-1. <a href="01 파이썬 시작하기.ipynb" style="display:none;">파이썬 시작하기</a>
+1. <a href="01_파이썬_시작하기.ipynb" style="display:none;">파이썬 시작하기</a>
