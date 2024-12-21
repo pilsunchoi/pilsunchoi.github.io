@@ -5,28 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="데이터과학의 첫걸음: Python과 함께하는 데이터 분석 입문">
     <title>데이터과학의 첫걸음</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        /* 기본 스타일 */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* 어두운 배경 */
+            color: white; /* 텍스트 색상 */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 화면 전체 높이 */
+        }
+
+        header {
+            text-align: center;
+        }
+
         /* 내비게이션 스타일 */
         nav ul {
             display: flex; /* 좌우 정렬 */
             list-style: none; /* 기본 리스트 스타일 제거 */
-            padding: 0; /* 여백 제거 */
-            margin: 0; /* 여백 제거 */
+            padding: 0;
+            margin: 0;
         }
 
         nav ul li {
-            margin-right: 20px; /* 항목 간 간격 */
-        }
-
-        nav ul li:last-child {
-            margin-right: 0; /* 마지막 항목 간격 제거 */
+            margin: 0 20px; /* 항목 간 간격 */
         }
 
         nav ul li a {
             text-decoration: none; /* 밑줄 제거 */
-            color: #007BFF; /* 링크 색상 */
-            font-size: 1.2em; /* 글자 크기 조정 */
+            color: white; /* 링크 색상 */
+            font-size: 1.5em; /* 글자 크기 조정 */
+            font-weight: bold;
         }
 
         nav ul li a:hover {
@@ -39,17 +52,10 @@
         <h1>데이터과학의 첫걸음</h1>
         <nav>
             <ul>
-                <li><a href="01_파이썬_시작하기.ipynb" title="Python 입문서 보기">BOOKS</a></li>
-                <li><a href="02_데이터_분석하기.ipynb" title="무역 데이터 분석 노트북 열기">무역데이터분석</a></li>
+                <li><a href="books.html" title="BOOKS 페이지로 이동">BOOKS</a></li>
+                <li><a href="trade_analysis.html" title="무역 데이터 분석 페이지로 이동">무역데이터분석</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <!-- 메인 콘텐츠를 이곳에 추가할 수 있습니다 -->
-    </main>
-    <footer>
-        <p>&copy; 2024 데이터과학의 첫걸음. All rights reserved.</p>
-    </footer>
 </body>
 </html>
-
