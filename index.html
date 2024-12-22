@@ -14,42 +14,67 @@
             color: white; /* 텍스트 색상 */
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column; /* 위에서 아래로 배치 */
             height: 100vh; /* 화면 전체 높이 */
         }
 
+        /* 헤더 스타일 */
         header {
+            background-color: #444; /* 헤더 배경색 */
+            padding: 10px 20px;
+            position: fixed; /* 화면 상단 고정 */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             text-align: center;
         }
 
-        /* 내비게이션 스타일 */
-        nav ul {
+        header nav ul {
             display: flex; /* 좌우 정렬 */
             list-style: none; /* 기본 리스트 스타일 제거 */
-            padding: 0;
             margin: 0;
+            padding: 0;
+            justify-content: center; /* 중앙 정렬 */
         }
 
-        nav ul li {
-            margin: 0 20px; /* 항목 간 간격 */
+        header nav ul li {
+            margin: 0 15px; /* 항목 간 간격 */
         }
 
-        nav ul li a {
+        header nav ul li a {
             text-decoration: none; /* 밑줄 제거 */
             color: white; /* 링크 색상 */
-            font-size: 1.5em; /* 글자 크기 조정 */
+            font-size: 1.2em; /* 글자 크기 */
             font-weight: bold;
         }
 
-        nav ul li a:hover {
+        header nav ul li a:hover {
             text-decoration: underline; /* 마우스 오버 시 밑줄 추가 */
+        }
+
+        /* 메인 콘텐츠 스타일 */
+        main {
+            flex: 1; /* 콘텐츠 영역 확장 */
+            padding: 60px 20px 40px; /* 헤더와 푸터 여백 */
+            text-align: center;
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            background-color: #444; /* 푸터 배경색 */
+            color: white;
+            padding: 10px 20px;
+            position: fixed; /* 화면 하단 고정 */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>데이터과학의 첫걸음</h1>
         <nav>
             <ul>
                 <li><a href="books.html" title="BOOKS 페이지로 이동">BOOKS</a></li>
@@ -57,6 +82,10 @@
             </ul>
         </nav>
     </header>
+    <main>
+        <h1>데이터과학의 첫걸음</h1>
+        <p>환영합니다! 여기에 메인 콘텐츠를 추가하세요.</p>
+    </main>
     <footer>
         <p>&copy; 2024 데이터과학의 첫걸음. All rights reserved.</p>
     </footer>
