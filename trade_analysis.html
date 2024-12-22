@@ -3,143 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="무역 데이터 분석 페이지">
+    <meta name="description" content="데이터과학의 첫걸음: 빅데이터 분석 with Python">
     <title>무역 데이터 분석</title>
     <style>
+        /* 기본 스타일 */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            background-color: #f7f7f7; /* main 배경색과 동일하게 통일 */
             color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
         }
 
-        header {
+        /* 내비게이션 메뉴 스타일 */
+        nav {
+            position: fixed;
+            top: 55px;
             width: 100%;
-            padding: 15px 0;
+            background-color: #f7f7f7; /* main 배경색과 동일하게 설정 */
             text-align: center;
-            background-color: #333;
-            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 1em;
+            margin: 0 20px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* 헤더 스타일 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #f7f7f7; /* main 배경색과 동일하게 설정 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            z-index: 1000;
         }
 
         header h1 {
+            font-size: 1.4em;
+            color: #000;
             margin: 0;
-            font-size: 1.8em;
         }
 
+        /* 메인 콘텐츠 스타일 */
         main {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            background-color: #f7f7f7; /* 이미 main 배경색과 동일 */
             width: 100%;
             max-width: 1200px;
-            padding: 20px;
-            flex-grow: 1;
+            margin-top: 180px;
         }
 
-        section {
-            margin-bottom: 40px;
-        }
-
-        section h2 {
-            font-size: 1.5em;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        section ul li {
-            margin-bottom: 10px;
-        }
-
+        /* 푸터 스타일 */
         footer {
             width: 100%;
+            background-color: #f7f7f7; /* main 배경색과 동일하게 설정 */
+            color: black;
             text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-        }
-
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+            font-size: 0.8em;
+            padding: 10px 20px;
+            border-top: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
+
+    <!-- 내비게이션 메뉴 -->
+    <nav>
+        <a href="books.html" title="BOOKS 페이지로 이동">BOOKS</a>
+        <a href="trade_analysis.html" title="무역 데이터 분석 페이지로 이동">무역데이터분석</a>
+    </nav>
+
     <!-- 헤더 -->
     <header>
-        <h1>무역 데이터 분석</h1>
+        <h1>데이터과학의 첫걸음</h1>
     </header>
 
     <!-- 메인 콘텐츠 -->
     <main>
-        <!-- 무역 데이터 링크 -->
-        <section>
-            <h2>1. 무역 데이터 링크</h2>
-            <ul>
-                <li><a href="https://www.trademap.org/" target="_blank">Trade Map</a>: 무역 데이터와 시각화 도구 제공</li>
-                <li><a href="https://comtrade.un.org/" target="_blank">UN Comtrade</a>: 유엔의 글로벌 무역 데이터</li>
-                <li><a href="https://www.wto.org/statistics/" target="_blank">WTO 통계</a>: 세계 무역 통계</li>
-            </ul>
-        </section>
-
-        <!-- 무역 데이터 API -->
-        <section>
-            <h2>2. 무역 데이터 API로 추출</h2>
-            <p>다양한 플랫폼에서 제공하는 API를 통해 무역 데이터를 자동으로 추출할 수 있습니다:</p>
-            <ul>
-                <li><a href="https://comtrade.un.org/data/doc/api/" target="_blank">UN Comtrade API</a>: 글로벌 무역 데이터 API</li>
-                <li><a href="https://developers.trademap.org/" target="_blank">Trade Map API</a>: 무역 데이터 조회용 API</li>
-                <li><a href="https://data.wto.org/" target="_blank">WTO 데이터 API</a>: 세계 무역 관련 데이터 API</li>
-            </ul>
-            <p>예시 코드:</p>
-            <pre>
-fetch('https://comtrade.un.org/api/get?type=C&freq=A&px=HS&ps=2022&r=all&p=0&rg=all&cc=TOTAL')
-    .then(response => response.json())
-    .then(data => console.log(data));
-            </pre>
-        </section>
-
-        <!-- 무역 데이터 분석 예제 -->
-        <section>
-            <h2>3. 무역 데이터 분석 예제</h2>
-            <p>무역 데이터를 활용한 분석 예제:</p>
-            <ul>
-                <li>수출입 데이터 시각화</li>
-                <li>국가별 무역 트렌드 분석</li>
-                <li>상품군별 주요 교역 국가 비교</li>
-            </ul>
-            <p>Python 예제:</p>
-            <pre>
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# 데이터 읽기
-data = pd.read_csv('trade_data.csv')
-
-# 상품별 수출 트렌드 시각화
-data.groupby('Year')['Export Value'].sum().plot(kind='line')
-plt.title('연도별 수출액')
-plt.xlabel('연도')
-plt.ylabel('수출액')
-plt.show()
-            </pre>
-        </section>
+        <p>환영합니다!</p>
     </main>
 
     <!-- 푸터 -->
     <footer>
-        <p>◯ 2024 무역 데이터 분석. 누구나 자유롭게 사용하고 배포할 수 있습니다.</p>
+        <p>◯ 2024 데이터과학의 첫걸음. 누구나 자유롭게 사용하고 배포할 수 있습니다.</p>
     </footer>
+
 </body>
 </html>
