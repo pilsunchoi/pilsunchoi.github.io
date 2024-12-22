@@ -58,25 +58,30 @@
             flex: 1; /* 콘텐츠 영역 확장 */
             padding: 60px 20px 40px; /* 헤더와 푸터 여백 */
             text-align: center;
+            background-color: white; /* 메인 배경색 */
+            color: black; /* 텍스트 색상 */
         }
 
         /* 푸터 스타일 */
         footer {
-            background-color: #444; /* 푸터 배경색 */
-            color: white;
+            background-color: white; /* 푸터 배경색 */
+            color: black; /* 텍스트 색상 */
             padding: 10px 20px;
             position: fixed; /* 화면 하단 고정 */
             bottom: 0;
             left: 0;
             right: 0;
             text-align: center;
+            border-top: 1px solid #ccc; /* 경계선 추가 */
         }
     </style>
 </head>
 <body>
     <header>
+            <h1>
+                데이터과학의 첫걸음
+            </h1>
         <nav>
-        <h1>데이터과학의 첫걸음</h1>
             <ul>
                 <li><a href="books.html" title="BOOKS 페이지로 이동">BOOKS</a></li>
                 <li><a href="trade_analysis.html" title="무역 데이터 분석 페이지로 이동">무역데이터분석</a></li>
