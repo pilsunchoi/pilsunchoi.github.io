@@ -20,6 +20,28 @@
             height: 100vh; /* 화면 전체 높이 */
         }
 
+        /* 내비게이션 메뉴 스타일 */
+        nav {
+            position: fixed; /* 맨 위에 고정 */
+            top: 0;
+            width: 100%;
+            text-align: center; /* 중앙 정렬 */
+            background-color: #f7f7f7; /* 배경색 통일 */
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000; /* 검정색 */
+            font-size: 1em; /* 글자 크기 */
+            margin: 0 20px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
         /* 헤더 스타일 */
         header {
             background-color: #f7f7f7; /* 배경색 통일 */
@@ -27,7 +49,7 @@
             width: 100%;
             text-align: left; /* 왼쪽 정렬 */
             position: fixed;
-            top: 0;
+            top: 60px; /* 내비게이션 메뉴 아래로 위치 */
             left: 0;
             right: 0;
             z-index: 1000;
@@ -42,35 +64,17 @@
             color: #000;
         }
 
-        /* 내비게이션 스타일 */
-        nav {
-            position: absolute;
-            top: 80px; /* 헤더 아래로 간격 추가 */
-            width: 100%;
-            text-align: center; /* 중앙 정렬 */
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #000; /* 검정색 */
-            font-size: 1em; /* 글자 크기 */
-            margin: 0 20px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
         /* 메인 콘텐츠 스타일 */
         main {
             text-align: center;
             padding: 100px 20px;
             font-size: 2em;
+            font-weight: bold; /* 볼드체 */
             color: #333;
             background-color: #f7f7f7; /* 배경색 통일 */
             width: 100%;
             max-width: 1200px; /* 최대 너비 설정 */
-            margin-top: 100px; /* 헤더와 여백 추가 */
+            margin-top: 100px; /* 내비게이션 메뉴와 여백 추가 */
         }
 
         /* 푸터 스타일 */
@@ -95,16 +99,16 @@
 </head>
 <body>
 
-    <!-- 헤더 -->
-    <header>
-        <h1>데이터과학의 첫걸음</h1>
-    </header>
-
     <!-- 내비게이션 메뉴 -->
     <nav>
         <a href="books.html" title="BOOKS 페이지로 이동">BOOKS</a>
         <a href="trade_analysis.html" title="무역 데이터 분석 페이지로 이동">무역데이터분석</a>
     </nav>
+
+    <!-- 헤더 -->
+    <header>
+        <h1>데이터과학의 첫걸음</h1>
+    </header>
 
     <!-- 메인 콘텐츠 -->
     <main>
