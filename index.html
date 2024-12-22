@@ -11,30 +11,29 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7; /* 배경색 통일 */
-            color: #333; /* 텍스트 색상 */
+            background-color: #f7f7f7;
+            color: #333;
             display: flex;
             flex-direction: column;
-            align-items: center; /* 콘텐츠를 수평 가운데 정렬 */
-            justify-content: flex-start; /* 콘텐츠를 위로 정렬 */
-            height: 100vh; /* 화면 전체 높이 */
+            align-items: center;
+            height: 100vh;
         }
 
         /* 내비게이션 메뉴 스타일 */
         nav {
-            position: fixed; /* 맨 위에 고정 */
-            top: 70px; /* 헤더 메뉴 바로 아래로 위치 */
+            position: fixed;
+            top: 0;
             width: 100%;
-            text-align: center; /* 중앙 정렬 */
-            background-color: #f7f7f7; /* 배경색 통일 */
+            background-color: #f7f7f7;
+            text-align: center;
+            padding: 15px 0;
             z-index: 1000;
-            padding: 20px 0;
         }
 
         nav a {
             text-decoration: none;
-            color: #000; /* 검정색 */
-            font-size: 1em; /* 글자 크기 */
+            color: #000;
+            font-size: 1em;
             margin: 0 20px;
         }
 
@@ -44,53 +43,44 @@
 
         /* 헤더 스타일 */
         header {
-            background-color: #f7f7f7; /* 배경색 통일 */
-            padding: 20px 0;
-            width: 100%;
-            text-align: center;
             position: fixed;
-            left: 0;
-            right: 0;
+            top: 0;
+            width: 100%;
+            background-color: #f7f7f7;
             display: flex;
-            align-items: center; /* 세로 가운데 정렬 */
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            z-index: 1000;
         }
 
         header h1 {
-            font-size: 1.2em; /* 폰트 크기 절반으로 줄임 */
-            margin: 0;
+            font-size: 1.2em;
             color: #000;
+            margin: 0;
         }
 
         /* 메인 콘텐츠 스타일 */
         main {
+            flex-grow: 1;
             text-align: center;
-            padding: 100px 20px;
             font-size: 2em;
-            font-weight: bold; /* 볼드체 */
+            font-weight: bold;
             color: #333;
-            background-color: #f7f7f7; /* 배경색 통일 */
+            background-color: #f7f7f7;
             width: 100%;
-            max-width: 1200px; /* 최대 너비 설정 */
-            margin-top: 100px; /* 내비게이션 메뉴와 여백 추가 */
+            max-width: 1200px;
+            margin-top: 140px; /* 내비게이션 및 헤더 아래 여백 */
         }
 
         /* 푸터 스타일 */
         footer {
-            background-color: #f7f7f7; /* 배경색 통일 */
-            color: black;
-            padding: 10px 20px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
             width: 100%;
+            background-color: #f7f7f7;
+            color: black;
             text-align: center;
+            padding: 10px 20px;
             border-top: 1px solid #ccc;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1em;
         }
     </style>
 </head>
