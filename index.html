@@ -7,27 +7,48 @@
     <title>데이터과학의 첫걸음</title>
     <style>
         /* 기본 스타일 */
-        body {
+        html, body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
             color: #333;
+            height: 100%;
+            overflow: hidden; /* 화면을 초과하지 않도록 설정 */
             display: flex;
             flex-direction: column;
+        }
+
+        /* 헤더 스타일 */
+        header {
+            flex-shrink: 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.4em;
+            color: #000;
+            margin: 0;
         }
 
         /* 내비게이션 메뉴 스타일 */
         nav {
+            flex-shrink: 0;
             position: fixed;
-            top: 55px; /* 헤더 아래로 위치하도록 조정 */
+            top: 55px; /* 헤더 아래 */
             width: 100%;
             background-color: #f7f7f7;
             text-align: center;
-            padding: 15px 0;
-            z-index: 1000;
+            padding: 10px 0;
+            z-index: 999;
         }
 
         nav a {
@@ -41,61 +62,45 @@
             text-decoration: underline;
         }
 
-        /* 헤더 스타일 */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #f7f7f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 0;
-            z-index: 1000;
-        }
-
-        header h1 {
-            font-size: 1.4em;
-            color: #000;
-            margin: 0;
-        }
-
         /* 메인 콘텐츠 스타일 */
         main {
-            flex-grow: 1;
+            flex-grow: 1; /* 남은 공간을 채움 */
+            margin-top: 120px; /* 헤더 및 내비게이션 아래 여백 */
             text-align: center;
             font-size: 2em;
             font-weight: bold;
             color: #333;
-            background-color: #f7f7f7;
-            width: 100%;
-            max-width: 1200px;
-            margin-top: 180px; /* 내비게이션 및 헤더 아래 여백 추가 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* 푸터 스타일 */
         footer {
+            flex-shrink: 0;
             width: 100%;
             background-color: #f7f7f7;
             color: black;
             text-align: center;
             padding: 10px 20px;
             border-top: 1px solid #ccc;
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
+
+    <!-- 헤더 -->
+    <header>
+        <h1>데이터과학의 첫걸음</h1>
+    </header>
 
     <!-- 내비게이션 메뉴 -->
     <nav>
         <a href="books.html" title="BOOKS 페이지로 이동">BOOKS</a>
         <a href="trade_analysis.html" title="무역 데이터 분석 페이지로 이동">무역데이터분석</a>
     </nav>
-
-    <!-- 헤더 -->
-    <header>
-        <h1>데이터과학의 첫걸음</h1>
-    </header>
 
     <!-- 메인 콘텐츠 -->
     <main>
