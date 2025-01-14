@@ -79,7 +79,7 @@
 <body>
     <!-- 헤더 -->
     <header>
-        <h1>무역 데이터 분석</h1>
+        <h1>무역 데이터</h1>
     </header>
 
     <!-- 메인 콘텐츠 -->
@@ -93,49 +93,6 @@
                 <li><a href="https://wits.worldbank.org/" target="_blank">세계은행 WITS</a>: World Integrated Trade Solution</li>
                 <li><a href="https://www.trademap.org/" target="_blank">Trade Map</a>: 무역 데이터와 시각화 도구 제공</li>
             </ul>
-        </section>
-
-        <!-- 무역 데이터 API -->
-        <section>
-            <h2>2. 무역 데이터 API로 추출</h2>
-            <p>다양한 플랫폼에서 제공하는 API를 통해 무역 데이터를 자동으로 추출할 수 있습니다:</p>
-            <ul>
-                <li><a href="https://comtrade.un.org/data/doc/api/" target="_blank">UN Comtrade API</a>: 글로벌 무역 데이터 API</li>
-                <li><a href="https://developers.trademap.org/" target="_blank">Trade Map API</a>: 무역 데이터 조회용 API</li>
-                <li><a href="https://data.wto.org/" target="_blank">WTO 데이터 API</a>: 세계 무역 관련 데이터 API</li>
-            </ul>
-            <p>예시 코드:</p>
-            <pre>
-fetch('https://comtrade.un.org/api/get?type=C&freq=A&px=HS&ps=2022&r=all&p=0&rg=all&cc=TOTAL')
-    .then(response => response.json())
-    .then(data => console.log(data));
-            </pre>
-        </section>
-
-        <!-- 무역 데이터 분석 예제 -->
-        <section>
-            <h2>3. 무역 데이터 분석 예제</h2>
-            <p>무역 데이터를 활용한 분석 예제:</p>
-            <ul>
-                <li>수출입 데이터 시각화</li>
-                <li>국가별 무역 트렌드 분석</li>
-                <li>상품군별 주요 교역 국가 비교</li>
-            </ul>
-            <p>Python 예제:</p>
-            <pre>
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# 데이터 읽기
-data = pd.read_csv('trade_data.csv')
-
-# 상품별 수출 트렌드 시각화
-data.groupby('Year')['Export Value'].sum().plot(kind='line')
-plt.title('연도별 수출액')
-plt.xlabel('연도')
-plt.ylabel('수출액')
-plt.show()
-            </pre>
         </section>
     </main>
 
