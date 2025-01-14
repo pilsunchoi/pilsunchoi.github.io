@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="무역 데이터 분석 페이지">
+    <title>무역 데이터 분석</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            background-color: #f7f7f7; /* 배경색 통일 */
+            color: #333; /* 텍스트 색상 */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        section ul li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f7f7f7; /* 배경색 통일 */
+            color: #333; /* 텍스트 색상 */
+            font-size: 0.8em; /* 글자 크기 변경 */
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <h1>무역 데이터</h1>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main>
+        <!-- 무역 데이터 링크 -->
+        <section>
+            <h2>1. 무역 데이터 링크</h2>
+            <ul>
+                <li><a href="https://comtrade.un.org/" target="_blank">UN Comtrade</a>: UN의 글로벌 무역 데이터</li>
+                <li><a href="https://stats.wto.org/" target="_blank">WTO 통계</a>: 세계무역기구 통계</li>
+                <li><a href="https://wits.worldbank.org/" target="_blank">세계은행 WITS</a>: World Integrated Trade Solution</li>
+                <li><a href="https://www.trademap.org/" target="_blank">Trade Map</a>: 무역 데이터와 시각화 도구 제공</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>◯ 2024 데이터과학의 첫걸음. 누구나 자유롭게 사용하고 배포할 수 있습니다.</p>
+    </footer>
+</body>
+</html>
