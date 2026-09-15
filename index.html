@@ -1,110 +1,156 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="데이터과학의 첫걸음">
-    <title>데이터과학의 첫걸음</title>
-    <style>
-        /* 기본 스타일 */
-        html, body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-            height: 100%;
-            overflow: hidden; /* 화면을 초과하지 않도록 설정 */
-            display: flex;
-            flex-direction: column;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>국제무역연구 | 최필선</title>
+<meta name="description" content="국제무역 연구를 위한 데이터베이스와 저서">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+  :root { --ink:#111418; --muted:#5f6670; --faint:#9aa0a8; --line:#e6e8eb; --bg:#ffffff; --tint:#f7f8f9; --accent:#0f6e5c; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-size:15.5px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  /* Plex Mono has no Hangul: fall back to Plex Sans KR so Korean in mono cells matches the body */
+  .mono { font-family:"IBM Plex Mono","IBM Plex Sans KR",ui-monospace,Consolas,monospace; }
+  .wrap { max-width:1040px; margin:0 auto; padding:72px 24px 40px; }
 
-        /* 헤더 스타일 */
-        header {
-            flex-shrink: 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #f7f7f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 0;
-            z-index: 1000;
-        }
+  h1 { margin:0; font-size:clamp(32px,5vw,42px); font-weight:700; letter-spacing:-.02em; line-height:1.2; }
 
-        header h1 {
-            font-size: 1.4em;
-            color: #000;
-            margin: 0;
-        }
+  .tabs { display:flex; margin-top:44px; border-bottom:1px solid var(--ink); }
+  .tabs a { display:flex; align-items:baseline; gap:10px; padding:10px 20px; font-size:14.5px; font-weight:600; color:var(--muted); }
+  .tabs a .mono { font-size:12px; font-weight:400; color:var(--faint); }
+  .tabs a:hover { color:var(--ink); }
+  .tabs a[aria-selected="true"] { background:var(--ink); color:#fff; }
+  .tabs a[aria-selected="true"] .mono { color:#b8bec6; }
 
-        /* 내비게이션 메뉴 스타일 */
-        nav {
-            flex-shrink: 0;
-            position: fixed;
-            top: 55px; /* 헤더 아래 */
-            width: 100%;
-            background-color: #f7f7f7;
-            text-align: center;
-            padding: 10px 0;
-            z-index: 999;
-        }
+  .thead, .tr { display:grid; grid-template-columns:48px minmax(0,1fr) 110px 150px 150px 28px; gap:16px; align-items:center; padding:0 12px; }
+  .thead { height:40px; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); border-bottom:1px solid var(--line); }
+  .tr { min-height:76px; padding-block:14px; border-bottom:1px solid var(--line); transition:background .12s ease; }
+  a.tr:hover { background:var(--tint); }
+  .n { font-size:12.5px; color:var(--faint); }
+  .name b { display:block; font-size:16px; font-weight:600; }
+  .name small { display:block; margin-top:2px; font-size:13.5px; color:var(--muted); }
+  .meta { display:contents; }
+  .meta span { font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .go { color:var(--faint); text-align:right; transition:transform .12s ease, color .12s ease; }
+  a.tr:hover .go { color:var(--accent); transform:translateX(3px); }
+  a.tr:hover .name b { color:var(--accent); }
 
-        nav a {
-            text-decoration: none;
-            color: #000;
-            font-size: 1em;
-            margin: 0 20px;
-        }
+  #books .thead, #books .tr { grid-template-columns:48px minmax(0,1fr) 150px 150px 110px; }
+  .name a:hover { color:var(--accent); }
+  .links { display:flex; gap:14px; justify-content:flex-end; font-size:13px; font-weight:500; }
+  .links a { color:var(--accent); }
+  .links a:hover { text-decoration:underline; text-underline-offset:3px; }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+  footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; margin-top:64px; font-size:12.5px; color:var(--faint); }
+  footer nav { display:flex; gap:18px; }
+  footer a:hover { color:var(--ink); }
 
-        /* 메인 콘텐츠 스타일 */
-        main {
-            flex-grow: 1; /* 남은 공간을 채움 */
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* 푸터 스타일 */
-        footer {
-            flex-shrink: 0;
-            width: 100%;
-            background-color: #f7f7f7;
-            color: black;
-            text-align: center;
-            font-size: 0.8em;
-            padding: 10px 20px;
- #           border-top: 1px solid #ccc;
-            position: fixed;
-            bottom: 0;
-        }
-    </style>
+  @media (max-width:760px) {
+    .wrap { padding-top:52px; }
+    .thead { display:none; }
+    .tr, #books .tr { grid-template-columns:32px minmax(0,1fr) auto; gap:4px 12px; align-items:start; padding-inline:4px; }
+    .meta { display:flex; flex-wrap:wrap; gap:4px 14px; grid-column:2; }
+    .meta span { font-size:12px; }
+    .go { grid-row:1; grid-column:3; }
+    #books .links { grid-column:2; justify-content:flex-start; }
+    .tabs a { padding:10px 14px; }
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <h1>국제무역연구</h1>
+  </header>
 
-    <!-- 헤더 -->
-    <header>
-        <h1>데이터과학의 첫걸음</h1>
-    </header>
+  <nav class="tabs" role="tablist" aria-label="섹션">
+    <a role="tab" href="#db" aria-controls="db" aria-selected="true">데이터베이스 <span class="mono">04</span></a>
+    <a role="tab" href="#books" aria-controls="books" aria-selected="false">저서 <span class="mono">04</span></a>
+  </nav>
 
-    <!-- 내비게이션 메뉴 -->
-    <nav>
-        <a href="books.html" title="BOOKS 페이지로 이동">BOOKS</a>
-        <a href="trade_data.html" title="무역데이터 페이지로 이동">무역데이터 링크</a>
-    </nav>
+  <section id="db" role="tabpanel" aria-label="데이터베이스">
+    <div class="thead mono"><span>#</span><span>Database</span><span>Period</span><span>Coverage</span><span>Source</span><span></span></div>
+    <a class="tr" href="https://pilsunchoi.github.io/KCSDB2/">
+      <span class="n mono">01</span>
+      <span class="name"><b>관세청 무역통계 DB</b><small>품목 × 국가별 월별 수출입 실적</small></span>
+      <span class="meta mono"><span>2007–2026</span><span>HS10 × 240개국</span><span>관세청 OpenAPI</span></span>
+      <span class="go">→</span>
+    </a>
+    <a class="tr" href="https://pilsunchoi.github.io/GVC/">
+      <span class="n mono">02</span>
+      <span class="name"><b>GVC 지표 DB</b><small>국가 × 산업 × 연도 글로벌 가치사슬 지표</small></span>
+      <span class="meta mono"><span>1995–2022</span><span>80개국 × 50산업</span><span>OECD ICIO 2025</span></span>
+      <span class="go">→</span>
+    </a>
+    <a class="tr" href="https://pilsunchoi.github.io/KCSTARIFF/">
+      <span class="n mono">03</span>
+      <span class="name"><b>한국 HSK 10단위 관세율 DB</b><small>기본·WTO 양허·탄력·FTA 세율</small></span>
+      <span class="meta mono"><span>2007–2026</span><span>HSK10 · 202만 행</span><span>관세율표</span></span>
+      <span class="go">→</span>
+    </a>
+    <a class="tr" href="https://pilsunchoi.github.io/TradeNetworkAtlas/">
+      <span class="n mono">04</span>
+      <span class="name"><b>Trade Network Atlas</b><small>품목별 세계 교역 네트워크 시각화</small></span>
+      <span class="meta mono"><span>1995–2024</span><span>207개국</span><span>CEPII BACI HS92</span></span>
+      <span class="go">→</span>
+    </a>
+  </section>
 
-    <!-- 메인 콘텐츠 -->
-    <main>
-        <p>환영합니다!</p>
-    </main>
+  <section id="books" role="tabpanel" aria-label="저서">
+    <div class="thead mono"><span>#</span><span>Title</span><span>Authors</span><span>Publisher</span><span></span></div>
+    <div class="tr">
+      <span class="n mono">01</span>
+      <span class="name"><a href="https://pilsunchoi.github.io/book1/"><b>데이터과학의 첫걸음</b></a><small>빅데이터 분석 with Python</small></span>
+      <span class="meta mono"><span>최필선 · 민인식</span><span>지필미디어, 2024</span></span>
+      <span class="links"><a href="https://pilsunchoi.github.io/book1/">온라인</a><a href="https://www.yes24.com/Product/Goods/132621421" target="_blank" rel="noopener">서점</a></span>
+    </div>
+    <div class="tr">
+      <span class="n mono">02</span>
+      <span class="name"><a href="https://pilsunchoi.github.io/book2/"><b>파이썬을 활용한 무역데이터 분석</b></a></span>
+      <span class="meta mono"><span>최필선 · 민인식</span><span>온라인 공개</span></span>
+      <span class="links"><a href="https://pilsunchoi.github.io/book2/">온라인</a></span>
+    </div>
+    <div class="tr">
+      <span class="n mono">03</span>
+      <span class="name"><a href="https://pilsunchoi.github.io/book3/"><b>데이터 기반 사회과학 분석</b></a><small>교육과 소득분배</small></span>
+      <span class="meta mono"><span>최필선 · 민인식</span><span>온라인 공개</span></span>
+      <span class="links"><a href="https://pilsunchoi.github.io/book3/">온라인</a></span>
+    </div>
+    <div class="tr">
+      <span class="n mono">04</span>
+      <span class="name"><a href="https://pilsunchoi.github.io/book4/"><b>데이터 분석 AI에게 맡겨라</b></a></span>
+      <span class="meta mono"><span>김원경 · 최필선</span><span>온라인 공개</span></span>
+      <span class="links"><a href="https://pilsunchoi.github.io/book4/">온라인</a></span>
+    </div>
+  </section>
+
+  <footer class="mono">
+    <span>© 2026 PILSUN CHOI</span>
+    <nav><a href="trade_data.html">외부 무역데이터</a><a href="https://github.com/pilsunchoi">GitHub</a></nav>
+  </footer>
+</div>
+<script>
+  const tabs = document.querySelectorAll('[role="tab"]');
+  function show(id) {
+    tabs.forEach(t => {
+      const on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', on);
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(t => t.addEventListener('click', e => {
+    e.preventDefault();
+    const id = t.getAttribute('aria-controls');
+    history.replaceState(null, '', '#' + id);
+    show(id);
+  }));
+  show(location.hash === '#books' ? 'books' : 'db');
+</script>
 </body>
 </html>
