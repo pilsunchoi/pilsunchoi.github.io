@@ -9,7 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <style>
-  :root { --ink:#111418; --muted:#5f6670; --faint:#9aa0a8; --line:#e6e8eb; --bg:#ffffff; --tint:#f7f8f9; --accent:#0f6e5c; }
+  :root { --ink:#111418; --muted:#5f6670; --faint:#9aa0a8; --line:#e6e8eb; --bg:#ffffff; --tint:#f7f8f9; --accent:#0f6e5c;
+          --ku:#036B3F; }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--ink);
     font-family:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
@@ -19,6 +20,10 @@
   .mono { font-family:"IBM Plex Mono","IBM Plex Sans KR",ui-monospace,Consolas,monospace; }
   .wrap { max-width:1040px; margin:0 auto; padding:72px 24px 40px; }
 
+  /* 제목 글자 폭에 맞춰 줄어드는 상자: 막대 폭이 h1 폭과 정확히 같아진다 */
+  header { display:inline-block; }
+  .ku { display:block; margin-bottom:12px; padding:3px 0 4px; background:var(--ku);
+        color:#fff; font-size:11.5px; font-weight:500; letter-spacing:.14em; line-height:1.1; text-align:center; }
   h1 { margin:0; font-size:clamp(32px,5vw,42px); font-weight:700; letter-spacing:-.02em; line-height:1.2; }
 
   .tabs { display:flex; margin-top:44px; border-bottom:1px solid var(--ink); }
@@ -64,6 +69,7 @@
 <body>
 <div class="wrap">
   <header>
+    <span class="ku mono">KONKUK UNIVERSITY</span>
     <h1>국제무역연구</h1>
   </header>
 
