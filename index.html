@@ -53,6 +53,8 @@
   a.tr:hover .name b { color:var(--accent); }
 
   #books .thead, #books .tr { grid-template-columns:48px minmax(0,1fr) 150px 150px 110px; }
+  /* 인라인 링크 안에 블록 요소(b)가 들어 있으면 초점 테두리가 그려지지 않는다 */
+  .name a { display:inline-block; }
   .name a:hover { color:var(--accent); }
   .links { display:flex; gap:14px; justify-content:flex-end; font-size:13px; font-weight:500; }
   .links a { color:var(--accent); }
