@@ -9,15 +9,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <style>
-  :root { --ink:#111418; --muted:#5f6670; --faint:#9aa0a8; --line:#e6e8eb; --bg:#ffffff; --tint:#f7f8f9; --accent:#0f6e5c;
+  /* --faint 는 11.5~12.5px 작은 글씨에 쓰이므로 흰 배경과 호버 배경(#f7f8f9) 모두에서 4.5:1 이상 */
+  :root { --ink:#111418; --muted:#5f6670; --faint:#6b7280; --line:#e6e8eb; --bg:#ffffff; --tint:#f7f8f9; --accent:#0f6e5c;
           --ku:#036B3F; }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--ink);
     font-family:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     font-size:15.5px; line-height:1.55; -webkit-font-smoothing:antialiased; }
   a { color:inherit; text-decoration:none; }
+  /* 키보드로 이동했을 때만 나타나는 초점 표시. 바깥으로 2px 띄워 검은 탭 위에서도 보이게 한다 */
+  :focus-visible { outline:2px solid var(--ku); outline-offset:2px; border-radius:2px; }
   /* Plex Mono has no Hangul: fall back to Plex Sans KR so Korean in mono cells matches the body */
   .mono { font-family:"IBM Plex Mono","IBM Plex Sans KR",ui-monospace,Consolas,monospace; }
+  /* 화면에는 안 보이고 화면 낭독기만 읽는 글 */
+  .sr { position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden;
+        clip:rect(0 0 0 0); white-space:nowrap; border:0; }
   .wrap { max-width:1040px; margin:0 auto; padding:72px 24px 40px; }
 
   /* 제목 글자 폭에 맞춰 줄어드는 상자: 막대 폭이 h1 폭과 정확히 같아진다 */
@@ -73,86 +79,110 @@
     <h1>국제무역연구</h1>
   </header>
 
-  <nav class="tabs" role="tablist" aria-label="섹션">
-    <a role="tab" href="#db" aria-controls="db" aria-selected="true">데이터베이스 <span class="mono">04</span></a>
-    <a role="tab" href="#books" aria-controls="books" aria-selected="false">저서 <span class="mono">04</span></a>
-  </nav>
+  <main>
+    <div class="tabs" role="tablist" aria-label="섹션">
+      <a role="tab" id="tab-db" href="#db" aria-controls="db" aria-selected="true" tabindex="0">데이터베이스 <span class="mono" aria-hidden="true">04</span><span class="sr">4건</span></a>
+      <a role="tab" id="tab-books" href="#books" aria-controls="books" aria-selected="false" tabindex="-1">저서 <span class="mono" aria-hidden="true">04</span><span class="sr">4건</span></a>
+    </div>
 
-  <section id="db" role="tabpanel" aria-label="데이터베이스">
-    <div class="thead mono"><span>#</span><span>Database</span><span>Period</span><span>Coverage</span><span>Source</span><span></span></div>
-    <a class="tr" href="https://pilsunchoi.github.io/KCSDB2/">
-      <span class="n mono">01</span>
-      <span class="name"><b>관세청 무역통계 DB</b><small>품목 × 국가별 월별 수출입 실적</small></span>
-      <span class="meta mono"><span>2007–2026</span><span>HS10 × 240개국</span><span>관세청 OpenAPI</span></span>
-      <span class="go">→</span>
-    </a>
-    <a class="tr" href="https://pilsunchoi.github.io/GVC/">
-      <span class="n mono">02</span>
-      <span class="name"><b>GVC 지표 DB</b><small>국가 × 산업 × 연도 글로벌 가치사슬 지표</small></span>
-      <span class="meta mono"><span>1995–2022</span><span>80개국 × 50산업</span><span>OECD ICIO 2025</span></span>
-      <span class="go">→</span>
-    </a>
-    <a class="tr" href="https://pilsunchoi.github.io/KCSTARIFF/">
-      <span class="n mono">03</span>
-      <span class="name"><b>한국 HSK 10단위 관세율 DB</b><small>기본·WTO 양허·탄력·FTA 세율</small></span>
-      <span class="meta mono"><span>2007–2026</span><span>HSK10 · 202만 행</span><span>관세율표</span></span>
-      <span class="go">→</span>
-    </a>
-    <a class="tr" href="https://pilsunchoi.github.io/TradeNetworkAtlas/">
-      <span class="n mono">04</span>
-      <span class="name"><b>Trade Network Atlas</b><small>품목별 세계 교역 네트워크 시각화</small></span>
-      <span class="meta mono"><span>1995–2024</span><span>207개국</span><span>CEPII BACI HS92</span></span>
-      <span class="go">→</span>
-    </a>
-  </section>
+    <section id="db" role="tabpanel" aria-labelledby="tab-db">
+      <div class="thead mono" aria-hidden="true"><span>#</span><span>Database</span><span>Period</span><span>Coverage</span><span>Source</span><span></span></div>
+      <a class="tr" href="https://pilsunchoi.github.io/KCSDB2/">
+        <span class="n mono">01</span>
+        <span class="name"><b>관세청 무역통계 DB</b><small>품목 × 국가별 월별 수출입 실적</small></span>
+        <span class="meta mono"><span><span class="sr">기간 </span>2007–2026</span><span><span class="sr">범위 </span>HS10 × 240개국</span><span><span class="sr">출처 </span>관세청 OpenAPI</span></span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="tr" href="https://pilsunchoi.github.io/GVC/">
+        <span class="n mono">02</span>
+        <span class="name"><b>GVC 지표 DB</b><small>국가 × 산업 × 연도 글로벌 가치사슬 지표</small></span>
+        <span class="meta mono"><span><span class="sr">기간 </span>1995–2022</span><span><span class="sr">범위 </span>80개국 × 50산업</span><span><span class="sr">출처 </span>OECD ICIO 2025</span></span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="tr" href="https://pilsunchoi.github.io/KCSTARIFF/">
+        <span class="n mono">03</span>
+        <span class="name"><b>한국 HSK 10단위 관세율 DB</b><small>기본·WTO 양허·탄력·FTA 세율</small></span>
+        <span class="meta mono"><span><span class="sr">기간 </span>2007–2026</span><span><span class="sr">범위 </span>HSK10 · 202만 행</span><span><span class="sr">출처 </span>관세율표</span></span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+      <a class="tr" href="https://pilsunchoi.github.io/TradeNetworkAtlas/">
+        <span class="n mono">04</span>
+        <span class="name"><b>Trade Network Atlas</b><small>품목별 세계 교역 네트워크 시각화</small></span>
+        <span class="meta mono"><span><span class="sr">기간 </span>1995–2024</span><span><span class="sr">범위 </span>207개국</span><span><span class="sr">출처 </span>CEPII BACI HS92</span></span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
+    </section>
 
-  <section id="books" role="tabpanel" aria-label="저서">
-    <div class="thead mono"><span>#</span><span>Title</span><span>Authors</span><span>Publisher</span><span></span></div>
-    <div class="tr">
-      <span class="n mono">01</span>
-      <span class="name"><a href="https://pilsunchoi.github.io/book1/"><b>데이터과학의 첫걸음</b></a><small>빅데이터 분석 with Python</small></span>
-      <span class="meta mono"><span>최필선 · 민인식</span><span>지필미디어, 2024</span></span>
-      <span class="links"><a href="https://pilsunchoi.github.io/book1/">온라인</a><a href="https://www.yes24.com/Product/Goods/132621421" target="_blank" rel="noopener">서점</a></span>
-    </div>
-    <div class="tr">
-      <span class="n mono">02</span>
-      <span class="name"><a href="https://pilsunchoi.github.io/book2/"><b>파이썬을 활용한 무역데이터 분석</b></a></span>
-      <span class="meta mono"><span>최필선 · 민인식</span><span>온라인 공개</span></span>
-      <span class="links"><a href="https://pilsunchoi.github.io/book2/">온라인</a></span>
-    </div>
-    <div class="tr">
-      <span class="n mono">03</span>
-      <span class="name"><a href="https://pilsunchoi.github.io/book3/"><b>데이터 기반 사회과학 분석</b></a><small>교육과 소득분배</small></span>
-      <span class="meta mono"><span>최필선 · 민인식</span><span>온라인 공개</span></span>
-      <span class="links"><a href="https://pilsunchoi.github.io/book3/">온라인</a></span>
-    </div>
-    <div class="tr">
-      <span class="n mono">04</span>
-      <span class="name"><a href="https://pilsunchoi.github.io/book4/"><b>데이터 분석 AI에게 맡겨라</b></a></span>
-      <span class="meta mono"><span>김원경 · 최필선</span><span>온라인 공개</span></span>
-      <span class="links"><a href="https://pilsunchoi.github.io/book4/">온라인</a></span>
-    </div>
-  </section>
+    <section id="books" role="tabpanel" aria-labelledby="tab-books" hidden>
+      <div class="thead mono" aria-hidden="true"><span>#</span><span>Title</span><span>Authors</span><span>Publisher</span><span></span></div>
+      <div class="tr">
+        <span class="n mono">01</span>
+        <span class="name"><a href="https://pilsunchoi.github.io/book1/"><b>데이터과학의 첫걸음</b></a><small>빅데이터 분석 with Python</small></span>
+        <span class="meta mono"><span><span class="sr">저자 </span>최필선 · 민인식</span><span><span class="sr">출판 </span>지필미디어, 2024</span></span>
+        <span class="links"><a href="https://pilsunchoi.github.io/book1/" aria-label="데이터과학의 첫걸음 온라인으로 읽기">온라인</a><a href="https://www.yes24.com/Product/Goods/132621421" target="_blank" rel="noopener" aria-label="데이터과학의 첫걸음 서점에서 보기 (새 창)">서점</a></span>
+      </div>
+      <div class="tr">
+        <span class="n mono">02</span>
+        <span class="name"><a href="https://pilsunchoi.github.io/book2/"><b>파이썬을 활용한 무역데이터 분석</b></a></span>
+        <span class="meta mono"><span><span class="sr">저자 </span>최필선 · 민인식</span><span><span class="sr">출판 </span>온라인 공개</span></span>
+        <span class="links"><a href="https://pilsunchoi.github.io/book2/" aria-label="파이썬을 활용한 무역데이터 분석 온라인으로 읽기">온라인</a></span>
+      </div>
+      <div class="tr">
+        <span class="n mono">03</span>
+        <span class="name"><a href="https://pilsunchoi.github.io/book3/"><b>데이터 기반 사회과학 분석</b></a><small>교육과 소득분배</small></span>
+        <span class="meta mono"><span><span class="sr">저자 </span>최필선 · 민인식</span><span><span class="sr">출판 </span>온라인 공개</span></span>
+        <span class="links"><a href="https://pilsunchoi.github.io/book3/" aria-label="데이터 기반 사회과학 분석 온라인으로 읽기">온라인</a></span>
+      </div>
+      <div class="tr">
+        <span class="n mono">04</span>
+        <span class="name"><a href="https://pilsunchoi.github.io/book4/"><b>데이터 분석 AI에게 맡겨라</b></a></span>
+        <span class="meta mono"><span><span class="sr">저자 </span>김원경 · 최필선</span><span><span class="sr">출판 </span>온라인 공개</span></span>
+        <span class="links"><a href="https://pilsunchoi.github.io/book4/" aria-label="데이터 분석 AI에게 맡겨라 온라인으로 읽기">온라인</a></span>
+      </div>
+    </section>
+  </main>
 
   <footer class="mono">
     <span>© 2026 PILSUN CHOI</span>
   </footer>
 </div>
 <script>
-  const tabs = document.querySelectorAll('[role="tab"]');
-  function show(id) {
+  const tablist = document.querySelector('[role="tablist"]');
+  const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+
+  function show(id, moveFocus) {
     tabs.forEach(t => {
       const on = t.getAttribute('aria-controls') === id;
       t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
       document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      if (on && moveFocus) t.focus();
     });
   }
+
   tabs.forEach(t => t.addEventListener('click', e => {
     e.preventDefault();
     const id = t.getAttribute('aria-controls');
     history.replaceState(null, '', '#' + id);
     show(id);
   }));
+
+  // 좌우 화살표·Home·End 로 탭 이동 (WAI-ARIA 탭 패턴)
+  tablist.addEventListener('keydown', e => {
+    const i = tabs.indexOf(document.activeElement);
+    if (i < 0) return;
+    let n = null;
+    if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+    else if (e.key === 'Home') n = 0;
+    else if (e.key === 'End') n = tabs.length - 1;
+    if (n === null) return;
+    e.preventDefault();
+    const id = tabs[n].getAttribute('aria-controls');
+    history.replaceState(null, '', '#' + id);
+    show(id, true);
+  });
+
   show(location.hash === '#books' ? 'books' : 'db');
 </script>
 </body>
