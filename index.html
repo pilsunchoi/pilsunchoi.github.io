@@ -39,21 +39,24 @@
   .tabs a[aria-selected="true"] { background:var(--ink); color:#fff; }
   .tabs a[aria-selected="true"] .mono { color:#b8bec6; }
 
-  .thead, .tr { display:grid; grid-template-columns:48px minmax(0,1fr) 110px 150px 150px 28px; gap:16px; align-items:center; padding:0 12px; }
+  /* 한 자료에 화면이 둘일 수 있다 — 소개(자료 자체)와 아틀라스(자료로 보는 것) */
+  .kinds { margin:20px 0 0; font-size:13px; color:var(--muted); }
+  .kinds b { color:var(--ink); font-weight:600; }
+
+  /* 칸이 하나 늘어(대시보드) 제목 칸이 좁아지므로, 좁은 폭에서는 더 일찍 쌓는다 —
+     아래 미디어쿼리 분기점 900px이 이 폭 계산과 짝이다 */
+  .thead, .tr { display:grid; grid-template-columns:48px minmax(0,1fr) 100px 148px 148px 104px; gap:16px; align-items:center; padding:0 12px; }
   .thead { height:40px; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); border-bottom:1px solid var(--line); }
-  .tr { min-height:76px; padding-block:14px; border-bottom:1px solid var(--line); transition:background .12s ease; }
-  a.tr:hover { background:var(--tint); }
+  .tr { min-height:76px; padding-block:14px; border-bottom:1px solid var(--line); }
   .n { font-size:12.5px; color:var(--faint); }
   .name b { display:block; font-size:16px; font-weight:600; }
   .name small { display:block; margin-top:2px; font-size:13.5px; color:var(--muted); }
   .meta { display:contents; }
   .meta span { font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums; }
-  .go { color:var(--faint); text-align:right; transition:transform .12s ease, color .12s ease; }
-  a.tr:hover .go { color:var(--accent); transform:translateX(3px); }
-  a.tr:hover .name b { color:var(--accent); }
 
-  #books .thead, #books .tr { grid-template-columns:48px minmax(0,1fr) 150px 150px 110px; }
-  /* 인라인 링크 안에 블록 요소(b)가 들어 있으면 초점 테두리가 그려지지 않는다 */
+  #books .thead, #books .tr { grid-template-columns:48px minmax(0,1fr) 148px 148px 104px; }
+  /* 인라인 링크 안에 블록 요소(b)가 들어 있으면 초점 테두리가 그려지지 않는다.
+     두 절 모두에서 쓴다 — 제목은 대표 화면으로, 오른쪽 칸은 화면마다 하나씩. */
   .name a { display:inline-block; }
   .name a:hover { color:var(--accent); }
   .links { display:flex; gap:14px; justify-content:flex-end; font-size:13px; font-weight:500; }
@@ -62,14 +65,13 @@
 
   footer { margin-top:64px; font-size:12.5px; color:var(--faint); }
 
-  @media (max-width:760px) {
+  @media (max-width:900px) {
     .wrap { padding-top:52px; }
     .thead { display:none; }
     .tr, #books .tr { grid-template-columns:32px minmax(0,1fr) auto; gap:4px 12px; align-items:start; padding-inline:4px; }
     .meta { display:flex; flex-wrap:wrap; gap:4px 14px; grid-column:2; }
     .meta span { font-size:12px; }
-    .go { grid-row:1; grid-column:3; }
-    #books .links { grid-column:2; justify-content:flex-start; }
+    .links { grid-column:2; justify-content:flex-start; }
     .tabs a { padding:10px 14px; }
   }
 </style>
@@ -88,43 +90,44 @@
     </div>
 
     <section id="db" role="tabpanel" aria-labelledby="tab-db">
-      <div class="thead mono" aria-hidden="true"><span>#</span><span>Database</span><span>Period</span><span>Coverage</span><span>Source</span><span></span></div>
-      <a class="tr" href="https://pilsunchoi.github.io/KCSDB2/">
+      <p class="kinds">화면은 두 가지다 — <b>소개</b>는 자료가 무엇이고 어떻게 만들었는지를, <b>아틀라스</b>는 그 자료로 무엇을 보는지를 보여 준다. 만들어 둔 것만 링크한다.</p>
+      <div class="thead mono" aria-hidden="true"><span>#</span><span>Database</span><span>Period</span><span>Coverage</span><span>Source</span><span>Dashboard</span></div>
+      <div class="tr">
         <span class="n mono">01</span>
-        <span class="name"><b>관세청 무역통계 DB</b><small>품목 × 국가별 월별 수출입 실적</small></span>
+        <span class="name"><a href="https://pilsunchoi.github.io/KCSDB2/"><b>관세청 무역통계 DB</b></a><small>품목 × 국가별 월별 수출입 실적</small></span>
         <span class="meta mono"><span><span class="sr">기간 </span>2007–2026</span><span><span class="sr">범위 </span>HS10 × 240개국</span><span><span class="sr">출처 </span>관세청 OpenAPI</span></span>
-        <span class="go" aria-hidden="true">→</span>
-      </a>
-      <a class="tr" href="https://pilsunchoi.github.io/GVC/">
+        <span class="links"><a href="https://pilsunchoi.github.io/KCSDB2/" aria-label="관세청 무역통계 DB 소개 대시보드">소개</a></span>
+      </div>
+      <div class="tr">
         <span class="n mono">02</span>
-        <span class="name"><b>GVC 지표 DB</b><small>국가 × 산업 × 연도 글로벌 가치사슬 지표</small></span>
+        <span class="name"><a href="https://pilsunchoi.github.io/GVC/"><b>GVC 지표 DB</b></a><small>국가 × 산업 × 연도 글로벌 가치사슬 지표</small></span>
         <span class="meta mono"><span><span class="sr">기간 </span>1995–2022</span><span><span class="sr">범위 </span>80개국 × 50산업</span><span><span class="sr">출처 </span>OECD ICIO 2025</span></span>
-        <span class="go" aria-hidden="true">→</span>
-      </a>
-      <a class="tr" href="https://pilsunchoi.github.io/KCSTARIFF/">
+        <span class="links"><a href="https://pilsunchoi.github.io/GVC/" aria-label="GVC 지표 DB 소개 대시보드">소개</a></span>
+      </div>
+      <div class="tr">
         <span class="n mono">03</span>
-        <span class="name"><b>한국 HSK 10단위 관세율 DB</b><small>기본·WTO 양허·탄력·FTA 세율</small></span>
+        <span class="name"><a href="https://pilsunchoi.github.io/KCSTARIFF/"><b>한국 HSK 10단위 관세율 DB</b></a><small>기본·WTO 양허·탄력·FTA 세율</small></span>
         <span class="meta mono"><span><span class="sr">기간 </span>2007–2026</span><span><span class="sr">범위 </span>HSK10 · 202만 행</span><span><span class="sr">출처 </span>관세율표</span></span>
-        <span class="go" aria-hidden="true">→</span>
-      </a>
-      <a class="tr" href="https://pilsunchoi.github.io/TradeNetworkAtlas/">
+        <span class="links"><a href="https://pilsunchoi.github.io/KCSTARIFF/" aria-label="한국 HSK 10단위 관세율 DB 소개 대시보드">소개</a></span>
+      </div>
+      <div class="tr">
         <span class="n mono">04</span>
-        <span class="name"><b>Trade Network Atlas</b><small>품목별 세계 교역 네트워크 시각화</small></span>
+        <span class="name"><a href="https://pilsunchoi.github.io/TradeNetworkAtlas/"><b>Trade Network Atlas</b></a><small>품목별 세계 교역 네트워크 시각화</small></span>
         <span class="meta mono"><span><span class="sr">기간 </span>1995–2024</span><span><span class="sr">범위 </span>207개국</span><span><span class="sr">출처 </span>CEPII BACI HS92</span></span>
-        <span class="go" aria-hidden="true">→</span>
-      </a>
-      <a class="tr" href="https://pilsunchoi.github.io/MaritimePulseAtlas/">
+        <span class="links"><a href="https://pilsunchoi.github.io/TradeNetworkAtlas/" aria-label="Trade Network Atlas 아틀라스 대시보드">아틀라스</a></span>
+      </div>
+      <div class="tr">
         <span class="n mono">05</span>
-        <span class="name"><b>Maritime Pulse Atlas</b><small>해협·운하·항만별 일일 해상 물동량</small></span>
+        <span class="name"><a href="https://pilsunchoi.github.io/MaritimePulseAtlas/"><b>Maritime Pulse Atlas</b></a><small>해협·운하·항만별 일일 해상 물동량</small></span>
         <span class="meta mono"><span><span class="sr">기간 </span>2019–현재</span><span><span class="sr">범위 </span>항만 2,065 · 해협 28</span><span><span class="sr">출처 </span>IMF PortWatch (AIS)</span></span>
-        <span class="go" aria-hidden="true">→</span>
-      </a>
-      <a class="tr" href="https://pilsunchoi.github.io/Services/">
+        <span class="links"><a href="https://pilsunchoi.github.io/MaritimePulseAtlas/" aria-label="Maritime Pulse Atlas 아틀라스 대시보드">아틀라스</a></span>
+      </div>
+      <div class="tr">
         <span class="n mono">06</span>
-        <span class="name"><b>서비스 교역 DB</b><small>국가쌍 서비스 교역과 상품 교역 짝</small></span>
+        <span class="name"><a href="https://pilsunchoi.github.io/Services/"><b>서비스 교역 DB</b></a><small>국가쌍 서비스 교역과 상품 교역 짝</small></span>
         <span class="meta mono"><span><span class="sr">기간 </span>2005–2024</span><span><span class="sr">범위 </span>203개국 × 31항목</span><span><span class="sr">출처 </span>OECD-WTO BaTIS</span></span>
-        <span class="go" aria-hidden="true">→</span>
-      </a>
+        <span class="links"><a href="https://pilsunchoi.github.io/Services/" aria-label="서비스 교역 DB 소개 대시보드">소개</a></span>
+      </div>
     </section>
 
     <section id="books" role="tabpanel" aria-labelledby="tab-books" hidden>
