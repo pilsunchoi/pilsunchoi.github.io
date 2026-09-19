@@ -39,9 +39,6 @@
   .tabs a[aria-selected="true"] { background:var(--ink); color:#fff; }
   .tabs a[aria-selected="true"] .mono { color:#b8bec6; }
 
-  /* 한 자료에 화면이 둘일 수 있다 — 소개(자료 자체)와 아틀라스(자료로 보는 것) */
-  .kinds { margin:20px 0 0; font-size:13px; color:var(--muted); }
-  .kinds b { color:var(--ink); font-weight:600; }
 
   /* 칸이 하나 늘어(대시보드) 제목 칸이 좁아지므로, 좁은 폭에서는 더 일찍 쌓는다 —
      아래 미디어쿼리 분기점 900px이 이 폭 계산과 짝이다 */
@@ -90,7 +87,6 @@
     </div>
 
     <section id="db" role="tabpanel" aria-labelledby="tab-db">
-      <p class="kinds">화면은 두 가지다 — <b>소개</b>는 자료가 무엇이고 어떻게 만들었는지를, <b>아틀라스</b>는 그 자료로 무엇을 보는지를 보여 준다. 만들어 둔 것만 링크한다.</p>
       <div class="thead mono" aria-hidden="true"><span>#</span><span>Database</span><span>Period</span><span>Coverage</span><span>Source</span><span>Dashboard</span></div>
       <div class="tr">
         <span class="n mono">01</span>
