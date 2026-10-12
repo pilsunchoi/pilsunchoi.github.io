@@ -60,6 +60,13 @@
   .links a { color:var(--accent); }
   .links a:hover { text-decoration:underline; text-underline-offset:3px; }
 
+  /* 집필 중인 저서: 제목을 책 사이트 로고의 보라로 살짝 구별하고 상태 태그를 단다.
+     #4a3aa7은 흰 배경 대비 8:1, 태그(#4a3aa7 on #efedf9)도 7:1 이상 */
+  .tr.wip .name b { color:#4a3aa7; }
+  .tr.wip .name a:hover b { color:#33287a; }
+  .tag { display:inline-block; margin-left:8px; padding:1px 8px 2px; border-radius:999px; background:#efedf9;
+         color:#4a3aa7; font-size:11.5px; font-weight:600; letter-spacing:.02em; vertical-align:2px; }
+
   footer { margin-top:64px; font-size:12.5px; color:var(--faint); }
 
   @media (max-width:900px) {
@@ -83,7 +90,7 @@
   <main>
     <div class="tabs" role="tablist" aria-label="섹션">
       <a role="tab" id="tab-db" href="#db" aria-controls="db" aria-selected="true" tabindex="0">데이터베이스 <span class="mono" aria-hidden="true">07</span><span class="sr">7건</span></a>
-      <a role="tab" id="tab-books" href="#books" aria-controls="books" aria-selected="false" tabindex="-1">저서 <span class="mono" aria-hidden="true">04</span><span class="sr">4건</span></a>
+      <a role="tab" id="tab-books" href="#books" aria-controls="books" aria-selected="false" tabindex="-1">저서 <span class="mono" aria-hidden="true">05</span><span class="sr">5건</span></a>
     </div>
 
     <section id="db" role="tabpanel" aria-labelledby="tab-db">
@@ -157,6 +164,12 @@
         <span class="name"><a href="https://pilsunchoi.github.io/book4/"><b>데이터 분석 AI에게 맡겨라</b></a></span>
         <span class="meta mono"><span><span class="sr">저자 </span>김원경 · 최필선</span><span><span class="sr">출판 </span>온라인 공개</span></span>
         <span class="links"><a href="https://pilsunchoi.github.io/book4/" aria-label="데이터 분석 AI에게 맡겨라 온라인으로 읽기">온라인</a></span>
+      </div>
+      <div class="tr wip">
+        <span class="n mono">05</span>
+        <span class="name"><a href="https://pilsunchoi.github.io/book5/"><b>AI 데이터 분석<span class="tag">집필 중</span></b></a><small>장이 완성되는 대로 하나씩 공개</small></span>
+        <span class="meta mono"><span><span class="sr">저자 </span>최필선</span><span><span class="sr">출판 </span>온라인 공개</span></span>
+        <span class="links"><a href="https://pilsunchoi.github.io/book5/" aria-label="AI 데이터 분석(집필 중) 온라인으로 읽기">온라인</a></span>
       </div>
     </section>
   </main>
